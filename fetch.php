@@ -29,7 +29,7 @@ if ($feed_xml = file_get_contents($feed_url)) {
 
                 }
                 else {
-                        $output .= '<p class="tracktext">&nbsp;&nbsp;| Played: N/A</p>';
+                        $output .= '<p class="tracktext">&nbsp;&nbsp;| Played: Now!</p>';
                 }
 
                 $output .= '</div>';
