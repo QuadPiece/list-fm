@@ -22,12 +22,7 @@ if ($feed_xml = file_get_contents($feed_url)) {
 		if ($track->image[3] != "") {
 			$output .= '<div class="cover"><img class="cover" src="' . $track->image[3] . '" /></div>';
 		}
-
-                //$output .= track artist, title and link
-		$output .= '<div class="tracktextcontainer">
-		<p class="tracktext"><span class="title">' . $track->artist . '</span><a href="' . $track->url . '"><br />' . $track->name . '</a></p>';
-
-                //$output .= N/A as time is song is currently being played
+		$output .= '<div class="tracktextcontainer"><p class="tracktext"><span class="title">' . $track->artist . '</span><a href="' . $track->url . '"><br />' . $track->name . '</a></p>';
 		if (!isset($track['nowplaying'])){
 			$output .= '<p class="tracktext">&nbsp;&nbsp;| Played: ' . $track->date . ' <small>(GMT)</small></p>';
 
@@ -35,10 +30,7 @@ if ($feed_xml = file_get_contents($feed_url)) {
 		else {
 			$output .= '<p class="tracktext">&nbsp;&nbsp;| Played: Now!</p>';
 		}
-
 		$output .= '</div>';
-
-                //$output .= that fancy Now Playing text thingy
 		if (isset($track['nowplaying']) && $track['nowplaying'] == 'true'){
 			$output .= '<p class="nowplaying"><span class="title">Now playing!</p>';
 

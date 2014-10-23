@@ -79,11 +79,18 @@ p, h1, h2, h3 h4, h5, h6 {
 	font-size: 38pt;
 	z-index: 1;
 	opacity: 0.1;
+	-webkit-animation: shadeshift 5s infinite;
 	animation: shadeshift 5s infinite;
+}
+
+-webkit-@keyframes shadeshift {
+	0%   {color: #111;}
+	50%  {color: #DDD;}
+	100% {color: #111;}
 }
 
 @keyframes shadeshift {
     0%   {color: #111;}
-    50%  {color: #999;}
+    50%  {color: #DDD;}
     100% {color: #111;}
 }
