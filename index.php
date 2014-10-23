@@ -16,8 +16,7 @@ $feed_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttrack
 $output = "";
 if ($feed_xml = file_get_contents($feed_url)) {
 	$feed_data = simplexml_load_string($feed_xml);        
-	$output .= '<div class="trackscontainer">';
-	$output .= '<ul>';
+	$output .= '<div class="trackscontainer"><ul>';
 	foreach ($feed_data->track as $track) {
 		$output .= '<li class="singletrack">';
 		if ($track->image[3] != "") {
@@ -46,8 +45,7 @@ if ($feed_xml = file_get_contents($feed_url)) {
 		}
 		$output .= '</li>';
 	}
-	$output .= '</ul>';
-	$output .= '</div>';
+	$output .= '</ul></div>';
 }
 $tpl = new RainTPL;
 $assign = array(
