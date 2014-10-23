@@ -1,0 +1,78 @@
+body {
+	padding: 30px;
+	padding-top: 70px;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #c2c2c2;
+}
+
+a, a:active, a:visited {
+	color: #e65100;
+}
+
+a:hover {
+	color: #ff6f00;
+}
+
+small {
+	opacity: 0.5;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+p, h1, h2, h3 h4, h5, h6 {
+	margin: 0;
+}
+
+.singletrack {
+	display: list-item;
+	list-style: none;
+	padding: 10px;
+	font-size: 12pt;
+	background-color: #F9F9F9;
+	box-shadow: 0px 0px 4px #111;
+	margin-bottom: 18px;
+}
+
+.streamtitle {
+	position: fixed;
+	opacity: 0.3;
+	font-size: 24pt;
+	top: 10px;
+	left: 10px;
+	z-index: -1;
+}
+
+.cover {
+	margin-right: 5px;
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	transition: width 1s, height 1s;
+	transition-delay: 1s;
+}
+
+.tracktextcontainer {
+	max-width: 400px;
+	display: inline-block;
+	z-index: 2;
+}
+
+.nowplaying {
+	float: right;
+	margin-bottom: -30px;
+	display: inline-block;
+	margin-left: -20px;
+	font-size: 38pt;
+	z-index: 1;
+	opacity: 0.1;
+	animation: shadeshift 5s infinite;
+}
+
+@keyframes shadeshift {
+    0%   {color: #111;}
+    50%  {color: #999;}
+    100% {color: #111;}
+}
