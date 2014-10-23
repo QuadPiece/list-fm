@@ -3,7 +3,7 @@ list-fm
 
 list.fm is a simple site to show your recent last.fm tracks that requires minimal setup
 
-you can find a demo here: http://test.quad.moe/tracks/
+You can find a demo here: http://test.quad.moe/tracks/
 
 How to set up
 =======
