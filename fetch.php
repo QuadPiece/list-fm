@@ -2,11 +2,11 @@
 
 //URL for feed (Make sure it's the 2.0 version)
 $feed_url = "http://ws.audioscrobbler.com/2.0/user/quadpiece/recenttracks";
- 
+
  //Get all the shit
 if ($feed_xml = file_get_contents($feed_url)) {
-        $feed_data = simplexml_load_string($feed_xml);        
-        
+        $feed_data = simplexml_load_string($feed_xml);
+
         //Echo the actual list
         echo '<div class="trackscontainer">';
         echo '<ul>';
@@ -28,7 +28,7 @@ if ($feed_xml = file_get_contents($feed_url)) {
 
                 }
                 else {
-                        echo '<p class="tracktext">&nbsp;&nbsp;| Played: N/A</p>';
+                        echo '<p class="tracktext">&nbsp;&nbsp;| Played: Now!</p>';
                 }
 
                 echo '</div>';
