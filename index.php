@@ -1,5 +1,18 @@
 <?php
-$feed_url = "http://ws.audioscrobbler.com/2.0/user/quadpiece/recenttracks";
+require_once "tpl.php";
+require_once "cfg.php";
+if (URL_USER) {
+	if (isset($_GET["u"])) {
+		$username = $_GET["u"];
+	}
+	else {
+		$default = true;
+	}
+}
+if (isset($default) && $default || !URL_USER) {
+	$username = DEFAULT_USER;
+}
+$feed_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttracks";
 $output = "";
 if ($feed_xml = file_get_contents($feed_url)) {
 	$feed_data = simplexml_load_string($feed_xml);        
@@ -12,8 +25,8 @@ if ($feed_xml = file_get_contents($feed_url)) {
 		}
 
                 //$output .= track artist, title and link
-		$output .= '<div class="tracktextcontainer">';
-		$output .= '<p class="tracktext"><span class="title">' . $track->artist . '</span><a href="' . $track->url . '"><br />' . $track->name . '</a></p>';
+		$output .= '<div class="tracktextcontainer">
+		<p class="tracktext"><span class="title">' . $track->artist . '</span><a href="' . $track->url . '"><br />' . $track->name . '</a></p>';
 
                 //$output .= N/A as time is song is currently being played
 		if (!isset($track['nowplaying'])){
@@ -36,8 +49,6 @@ if ($feed_xml = file_get_contents($feed_url)) {
 	$output .= '</ul>';
 	$output .= '</div>';
 }
-require_once "tpl.php";
-$username = "Quad";
 $tpl = new RainTPL;
 $assign = array(
 	"username" => $username,
