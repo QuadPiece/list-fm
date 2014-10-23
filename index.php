@@ -5,7 +5,7 @@ $username = "Quad"
 
 ?>
 
-<!-- fm.lister by Leafcat -->
+<!-- list.fm by Leafcat -->
 
 <html>
 	<head>
