@@ -8,10 +8,36 @@
 	<body>
 		<!-- Cached at: {function="time()"} -->
 		{if="isset($usestreamtitle)"}
-			<p class="streamtitle">{if="isset($streamtitle)"}{$streamtitle}{else}Recently played tracks of {$username}<small> (via last.fm)</small>{/if}</p>
+			<p class="streamtitle">
+				{if="isset($streamtitle)"}
+					{$streamtitle}
+				{else}
+					Recently played tracks of {$username}<small> (via last.fm)</small>
+				{/if}
+			</p>
 		{/if}
 		<div class="trackscontainer"><ul>
-		{$content}
+			{loop="content"}
+				<li class="singletrack">
+					{if="$value->image[3] != ''"}
+						<div class="cover">
+							<img class="cover" src="{$value->image[3]}">
+						</div>
+					{/if}
+					<div class="tracktextcontainer"><p class="tracktext"><span class="title">{$value->artist}</span><a href="{$value->url}"><br />{$value->name}</a></p>
+						{if="!isset($value->attributes()['nowplaying'])"}
+							<p class="tracktext">
+								&nbsp;&nbsp;| Played: {$value->date} <small>(GMT)</small>
+							</p>
+						{else}
+							<p class="tracktext">&nbsp;&nbsp;| Played: Now!</p>
+						{/if}
+					</div>
+					{if="isset($value->attributes()['nowplaying']) && $value->attributes()['nowplaying'] == 'true'"}
+						<p class="nowplaying"><span class="title">Now playing!</p>
+					{/if}
+				</li>
+			{/loop}
 		</ul></div>
 	</body>
 </html>
