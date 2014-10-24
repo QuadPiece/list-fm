@@ -11,3 +11,5 @@ define('CSS_DIR', NULL);
 define('USESTREAMTITLE', true);
 // Set a custom title for it, if you wish.
 define('CUST_STREAM_TITLE', NULL);
+// Cache expire
+define('CACHE_EXPIRE_TIME', 60 * 2);

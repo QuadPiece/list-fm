@@ -12,6 +12,15 @@ if (URL_USER) {
 if (isset($default) && $default || !URL_USER) {
 	$username = DEFAULT_USER;
 }
+if (file_exists("cached/" . $username . ".html")) {
+	$filecont = file_get_contents("cached/" . $username . ".html");
+	if (preg_match_all("<!-- Cached at: (\d*) -->", $filecont, $matches)) {
+		if (CACHE_EXPIRE_TIME + time() > $matches[1][0]) {
+			echo $filecont;
+			exit;
+		}
+	}
+}
 $feed_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttracks";
 $output = "";
 if ($feed_xml = file_get_contents($feed_url)) {
@@ -49,4 +58,6 @@ $assign = array(
 	"streamtitle" => CUST_STREAM_TITLE,
 	);
 $tpl->assign($assign);
-echo $tpl->draw('page', $return_string = true);
+$draw = $tpl->draw('page', $return_string = true);
+file_put_contents("cached/" . $username . ".html", $draw);
+echo $draw;

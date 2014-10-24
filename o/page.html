@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>{if="isset($pagetitle)"}{$pagetitle}{/if}{else}Recently played tracks by {$username}{/else}</title>
-		<link rel="stylesheet" type="text/css" href="{if="isset($customcss)"}{$customcss}">{/if}{else}tracklist.css">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>{/else}
+		<title>{if="isset($pagetitle)"}{$pagetitle}{else}Recently played tracks by {$username}{/if}</title>
+		<link rel="stylesheet" type="text/css" href="{if="isset($customcss)"}{$customcss}">{else}tracklist.css"><link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>{/if}
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		{if="isset($usetreamtitle)"}
-			<p class="streamtitle">{if="isset($streamtitle)"}{$streamtitle}{/if}{else}Recently played tracks of {$username}{/else}</p>
+		<!-- Cached at: {function="time()"} -->
+		{if="isset($usestreamtitle)"}
+			<p class="streamtitle">{if="isset($streamtitle)"}{$streamtitle}{else}Recently played tracks of {$username}<small> (via last.fm)</small>{/if}</p>
 		{/if}
 		{$content}
 	</body>
