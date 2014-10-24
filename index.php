@@ -15,7 +15,7 @@ if (isset($default) && $default || !URL_USER) {
 if (file_exists("cached/" . $username . ".html")) {
 	$filecont = file_get_contents("cached/" . $username . ".html");
 	if (preg_match_all("<!-- Cached at: (\d*) -->", $filecont, $matches)) {
-		if (time() - CACHE_EXPIRE_TIME > $matches[1][0]) {
+		if (time() - CACHE_EXPIRE_TIME < $matches[1][0]) {
 			echo $filecont;
 			exit;
 		}
