@@ -15,7 +15,7 @@ if (isset($default) && $default || !URL_USER) {
 if (file_exists("cached/" . $username . ".html")) {
 	$filecont = file_get_contents("cached/" . $username . ".html");
 	if (preg_match_all("<!-- Cached at: (\d*) -->", $filecont, $matches)) {
-		if (CACHE_EXPIRE_TIME + time() > $matches[1][0]) {
+		if (time() - CACHE_EXPIRE_TIME > $matches[1][0]) {
 			echo $filecont;
 			exit;
 		}
@@ -24,8 +24,7 @@ if (file_exists("cached/" . $username . ".html")) {
 $feed_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttracks";
 $output = "";
 if ($feed_xml = file_get_contents($feed_url)) {
-	$feed_data = simplexml_load_string($feed_xml);        
-	$output .= '<div class="trackscontainer"><ul>';
+	$feed_data = simplexml_load_string($feed_xml);
 	foreach ($feed_data->track as $track) {
 		$output .= '<li class="singletrack">';
 		if ($track->image[3] != "") {
@@ -46,7 +45,6 @@ if ($feed_xml = file_get_contents($feed_url)) {
 		}
 		$output .= '</li>';
 	}
-	$output .= '</ul></div>';
 }
 $tpl = new RainTPL;
 $assign = array(

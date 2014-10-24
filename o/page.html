@@ -10,6 +10,8 @@
 		{if="isset($usestreamtitle)"}
 			<p class="streamtitle">{if="isset($streamtitle)"}{$streamtitle}{else}Recently played tracks of {$username}<small> (via last.fm)</small>{/if}</p>
 		{/if}
+		<div class="trackscontainer"><ul>
 		{$content}
+		</ul></div>
 	</body>
 </html>
