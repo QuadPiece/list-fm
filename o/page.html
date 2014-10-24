@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Recent last.fm tracks by {$username}</title>
-		<link rel="stylesheet" type="text/css" href="tracklist.css">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<title>{if="isset($pagetitle)"}{$pagetitle}{/if}{else}Recently played tracks by {$username}{/else}</title>
+		<link rel="stylesheet" type="text/css" href="{if="isset($customcss)"}{$customcss}">{/if}{else}tracklist.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>{/else}
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<p class="streamtitle">Recently played tracks of {$username}<small> (via Last.fm)</small></p>
-
+		{if="isset($usetreamtitle)"}
+			<p class="streamtitle">{if="isset($streamtitle)"}{$streamtitle}{/if}{else}Recently played tracks of {$username}{/else}</p>
+		{/if}
 		{$content}
-
 	</body>
 </html>

@@ -43,6 +43,10 @@ $tpl = new RainTPL;
 $assign = array(
 	"username" => $username,
 	"content" => $output,
+	"pagetitle" => TITLE_TAG,
+	"customcss" => CSS_DIR,
+	"usestreamtitle" => USESTREAMTITLE,
+	"streamtitle" => CUST_STREAM_TITLE,
 	);
 $tpl->assign($assign);
 echo $tpl->draw('page', $return_string = true);
