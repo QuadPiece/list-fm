@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^([a-zA-Z][a-zA-Z-_\\d]{1,14})/?$ index.php?u=$1 [NC,L]

@@ -47,6 +47,11 @@ if (CACHE) {
 		}
 	}
 }
+if (!preg_match("/([a-zA-Z][a-zA-Z-_\\d]{1,14})/", $username, $matches)) {
+	error("that username doesn't match the last.fm username rules.", $username);
+	die();
+}
+$username = $matches[1];
 $feed_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttracks?limit=" . LIMIT;
 if ($feed_xml = @file_get_contents($feed_url)) {
 	if ($feed_xml == "ERROR: No user with that name was found") {
@@ -58,6 +63,10 @@ if ($feed_xml = @file_get_contents($feed_url)) {
 else {
 	error("php can't call the API url. This can happen because the API is temporary down, or because we can't access the API url, or because that user doesn't exist.", $username);
 	die();
+}
+if (!isset($feed_data["track"])) {
+	error("that user hasn't scrobbled any tracks yet, from what we see.", $username);
+	exit();
 }
 $tpl = new RainTPL;
 $assign = array(
