@@ -42,6 +42,7 @@ $assign = array(
 	"customcss" => CSS_DIR,
 	"usestreamtitle" => USESTREAMTITLE,
 	"streamtitle" => CUST_STREAM_TITLE,
+	"cache" => CACHE,
 	);
 $tpl->assign($assign);
 $draw = $tpl->draw('page', $return_string = true);

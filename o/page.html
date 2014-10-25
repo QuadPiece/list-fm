@@ -6,7 +6,9 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<!-- Cached at: {function="time()"} -->
+		{if="isset($cache) && $cache"}
+			<!-- Cached at: {function="time()"} -->
+		{/if}
 		{if="isset($usestreamtitle)"}
 			<p class="streamtitle">
 				{if="isset($streamtitle)"}
