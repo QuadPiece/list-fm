@@ -42,7 +42,7 @@ if (CACHE) {
 		if (preg_match_all("<!-- Cached at: (\d*) -->", $filecont, $matches)) {
 			if (time() - CACHE_EXPIRE_TIME < $matches[1][0]) {
 				echo $filecont;
-				exit;
+				die();
 			}
 		}
 	}
@@ -51,12 +51,13 @@ $feed_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttrack
 if ($feed_xml = @file_get_contents($feed_url)) {
 	if ($feed_xml == "ERROR: No user with that name was found") {
 		error("no user with that name was found!", $username);
+		die();
 	}
 	$feed_data = xml2array(simplexml_load_string($feed_xml));
 }
 else {
 	error("php can't call the API url. This can happen because the API is temporary down, or because we can't access the API url, or because that user doesn't exist.", $username);
-	exit;
+	die();
 }
 $tpl = new RainTPL;
 $assign = array(

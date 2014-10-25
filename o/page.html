@@ -27,7 +27,8 @@
 						</div>
 					{/if}
 					<div class="tracktextcontainer"><p class="tracktext"><span class="title">{$value->artist}</span><a href="{$value->url}"><br />{$value->name}</a></p>
-						{if="!isset($value->attributes()['nowplaying'])"}
+						<?php $whatever = $value1->attributes(); ?>
+						{if="!$whatever['nowplaying']"}
 							<p class="tracktext">
 								&nbsp;&nbsp;| Played: {$value->date} <small>(GMT+0)</small>
 							</p>
@@ -35,7 +36,7 @@
 							<p class="tracktext">&nbsp;&nbsp;| Played: Now!</p>
 						{/if}
 					</div>
-					{if="isset($value->attributes()['nowplaying']) && $value->attributes()['nowplaying'] == 'true'"}
+					{if="isset($whatever['nowplaying']) && $whatever['nowplaying'] == 'true'"}
 						<p class="nowplaying"><span class="title">Now playing!</p>
 					{/if}
 				</li>
