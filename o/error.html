@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Error</title>
+		<link rel="stylesheet" type="text/css" href="{if="isset($customcss)"}{$customcss}">{else}tracklist.css"><link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>{/if}
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		{if="isset($cache) && $cache"}
+			<!-- Cached at: {function="time()"} -->
+		{/if}
+		{if="isset($usestreamtitle) && $usestreamtitle"}
+			<p class="streamtitle">
+				{if="isset($streamtitle)"}
+					{$streamtitle}
+				{else}
+					Error
+				{/if}
+			</p>
+		{/if}
+		<div class="trackscontainer"><ul>
+			<p>Error: {$error}</p>
+			<br>
+			<p>We're terribly sorry for this error. If you think it should be reported, you can always open an issue in the repository over at <a href="https://github.com/Leafcat/list-fm/issues">Leafcat</a>, <b>specifying that this happens in the made-better branch.</b> (Otherwise quadpiece would fuck his mind thinking how it could have happened :P).</p>
+		</ul></div>
+	</body>
+</html>

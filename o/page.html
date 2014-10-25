@@ -9,7 +9,7 @@
 		{if="isset($cache) && $cache"}
 			<!-- Cached at: {function="time()"} -->
 		{/if}
-		{if="isset($usestreamtitle)"}
+		{if="isset($usestreamtitle) && $usestreamtitle"}
 			<p class="streamtitle">
 				{if="isset($streamtitle)"}
 					{$streamtitle}
