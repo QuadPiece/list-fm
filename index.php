@@ -19,12 +19,14 @@ if (URL_USER) {
 if (isset($default) && $default || !URL_USER) {
 	$username = DEFAULT_USER;
 }
-if (file_exists("cached/" . $username . ".html")) {
-	$filecont = file_get_contents("cached/" . $username . ".html");
-	if (preg_match_all("<!-- Cached at: (\d*) -->", $filecont, $matches)) {
-		if (time() - CACHE_EXPIRE_TIME < $matches[1][0]) {
-			echo $filecont;
-			exit;
+if (CACHE) {
+	if (file_exists("cached/" . $username . ".html")) {
+		$filecont = file_get_contents("cached/" . $username . ".html");
+		if (preg_match_all("<!-- Cached at: (\d*) -->", $filecont, $matches)) {
+			if (time() - CACHE_EXPIRE_TIME < $matches[1][0]) {
+				echo $filecont;
+				exit;
+			}
 		}
 	}
 }
@@ -44,5 +46,7 @@ $assign = array(
 	);
 $tpl->assign($assign);
 $draw = $tpl->draw('page', $return_string = true);
-file_put_contents("cached/" . $username . ".html", $draw);
+if (CACHE) {
+	file_put_contents("cached/" . $username . ".html", $draw);
+}
 echo $draw;
