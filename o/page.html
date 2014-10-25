@@ -29,7 +29,7 @@
 					<div class="tracktextcontainer"><p class="tracktext"><span class="title">{$value->artist}</span><a href="{$value->url}"><br />{$value->name}</a></p>
 						{if="!isset($value->attributes()['nowplaying'])"}
 							<p class="tracktext">
-								&nbsp;&nbsp;| Played: {$value->date} <small>(GMT)</small>
+								&nbsp;&nbsp;| Played: {$value->date} <small>(GMT+0)</small>
 							</p>
 						{else}
 							<p class="tracktext">&nbsp;&nbsp;| Played: Now!</p>
