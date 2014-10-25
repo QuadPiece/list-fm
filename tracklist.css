@@ -40,12 +40,11 @@ p, h1, h2, h3 h4, h5, h6 {
 }
 
 .streamtitle {
-	position: fixed;
 	opacity: 0.3;
 	font-size: 24pt;
+	position: absolute;
 	top: 10px;
 	left: 10px;
-	z-index: -1;
 }
 
 .cover {
