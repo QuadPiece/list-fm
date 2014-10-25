@@ -31,7 +31,6 @@ if (CACHE) {
 	}
 }
 $feed_url = "http://ws.audioscrobbler.com/2.0/user/" . $username . "/recenttracks";
-$output = "";
 if ($feed_xml = file_get_contents($feed_url)) {
 	$feed_data = xml2array(simplexml_load_string($feed_xml));
 }
