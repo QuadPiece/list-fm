@@ -3,6 +3,9 @@
 define('URL_USER', true);
 // Who is the default user?
 define('DEFAULT_USER', "DahHowl");
+// Number of entries. Last.fm API allows a maxium of 200 entries, tho that's discouraged because that can cause the page to be
+// loaded very slowly.
+define('LIMIT', 30);
 // What should be in the index.php <title> tag?
 define('TITLE_TAG', NULL);
 // custom css, put the directory where it is.
